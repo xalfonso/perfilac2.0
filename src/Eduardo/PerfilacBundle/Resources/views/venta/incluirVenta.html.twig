@@ -1,0 +1,200 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Insertar Venta{% endblock %}
+{% block body %}
+
+    <!-- Nav tabs -->
+    <ul id="mytab" class="nav nav-tabs">
+        <li class="active"><a href="#DatosGenerales" data-toggle="tab">Datos Generales</a></li>        
+        <li><a href="#Cliente" data-toggle="tab">Cliente</a></li> 
+        <li><a href="#Transportador" data-toggle="tab">Transportador</a></li> 
+        <li><a href="#Productos" data-toggle="tab">Productos</a></li> 
+    </ul>
+
+    <form id="formInsertarVenta" method="post" action="ej" class="ganar_form_basico">
+        <div class="tab-content">
+            <div class="tab-pane active" id="DatosGenerales">
+                <fieldset id="fiel_datosGenerales">
+
+                    <div class="ganar_form_par">
+                        <label for="inp_numero"> N&uacute;mero </label>
+                        <input type="text" name="name_numero" id="inp_numero" maxlength="200" alt="input para el numero" required="required" tabindex="1" title="Debe insertar el numero" placeholder="numero" accesskey="n"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="id_tipo"> Tipo </label>
+                        <select id="id_tipo" name="name_tipo" tabindex="2" required="required">
+                            {% for tipo in tipos %}
+                                <option value="{{ tipo.id }}"> {{ tipo.nombre }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>                              
+                    <div class="ganar_form_par">
+                        <label for="inp_fecha"> Fecha </label>
+                        <input type="text" name="name_fecha" id="inp_fecha" alt="input para la fecha" required tabindex="3" title="fecha" placeholder="m/d/a" accesskey="f" value="{{ "now"|date("m/d/Y") }}"/>
+                    </div>                   
+                </fieldset>
+            </div>        
+            <div class="tab-pane" id="Cliente">
+                <fieldset id="fiel_cliente">
+                    <div class="ganar_form_par">
+                        <label for="id_clientes"> Cliente </label>
+                        <select id="id_clientes" name="name_clientes" tabindex="4" required="required">
+                            {% for cliente in clientes %}
+                                <option value="{{ cliente.id }}"> {{ cliente.nombre }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="id_representantes"> Rep. </label>
+                        <select id="id_representantes" name="name_representantes" tabindex="5" required="required">
+                        </select>                        
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_obra"> Obra </label>
+                        <input type="text" name="name_obra" id="inp_obra" maxlength="200" alt="input para la obra" required="required" tabindex="6" title="Debe insertar la obra" placeholder="obra" accesskey="r"/>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="tab-pane" id="Transportador">
+                <fieldset id="fiel_transportador">
+                    <div class="ganar_form_par">
+                        <label for="inp_nombTransportador"> Nombre </label>
+                        <input type="text" name="name_nombTransportador" id="inp_nombTransportador" maxlength="200" alt="input para el nombre completo" tabindex="7" title="Debe insertar el nombre completo" placeholder="nombre completo" accesskey="l"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_ciTransportador"> CI </label>
+                        <input type="text" name="name_ciTransportador" id="inp_ciTransportador" maxlength="11" alt="input para el ci" tabindex="8" title="Debe insertar el ci" placeholder="ci" accesskey="i"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_chapaTransportador"> Chapa </label>
+                        <input type="text" name="name_chapaTransportador" id="inp_chapaTransportador" maxlength="200" alt="input para el ci" tabindex="9" title="Debe insertar la chapa" placeholder="chapa" accesskey="p"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_licenciaTransportador"> Licencia </label>
+                        <input type="text" name="name_licenciaTransportador" id="inp_licenciaTransportador" maxlength="200" alt="input para la licencia" tabindex="10" title="Debe insertar la licencia" placeholder="licencia" accesskey="c"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_cargoTransportador"> Cargo </label>
+                        <input type="text" name="name_cargoTransportador" id="inp_cargoTransportador" maxlength="200" alt="input para el cargo" tabindex="11" title="Debe insertar el cargo" placeholder="cargo" accesskey="g"/>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="tab-pane" id="Productos">
+                <fieldset id="fiel_productos">
+                    <div class="ganar_form_par">
+                        <label for="id_tipoproductos"> T. Producto </label>
+                        <select id="id_tipoproductos" name="name_tipoproductos" tabindex="7" required="required">
+                            {% for tipoproducto in tipoproductos %}
+                                <option value="{{ tipoproducto.id }}"> {{ tipoproducto }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="id_tipoenchapes"> T. Enchape </label>
+                        <select id="id_tipoenchapes" name="name_tipoenchapes" tabindex="7" required="required">
+                            {% for tipoenchape in tipoenchapes %}
+                                <option value="{{ tipoenchape.id }}"> {{ tipoenchape }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="id_productos"> Producto </label>
+                        <select id="id_productos" name="name_productos" tabindex="7" required="required">
+                            {% for producto in productos %}
+                                <option value="{{ producto.id }}"> {{ producto }} </option>
+                            {% endfor %}
+                        </select>                        
+                         <img id="msg_producto_noencontrado" src="{{ asset('bundles/perfilac/images/noResultado.png') }}" alt="Productos No Encontrados!!!" height="20" />
+                         <img id="msg_producto_encontrado" src="{{ asset('bundles/perfilac/images/Resultado.png') }}" alt="Productos Encontrados!!!" height="20" />
+                    </div>
+                    <hr>                   
+                    <div class="ganar_form_par">
+                        <label for="inp_codigo">C&oacute;digo </label>
+                        <input type="hidden" name="name_idproducto" id="id_idproducto" />
+                        <input type="text" name="name_codigo" id="inp_codigo" readonly="readonly" maxlength="200" alt="input para el codigo" required="required" tabindex="8" title="Debe insertar el codigo" placeholder="codigo" accesskey="c"/>
+                    </div>
+
+                    <div class="ganar_form_par">
+                        <label for="inp_nficha">No. Ficha </label>
+                        <input type="text" name="name_nficha" id="inp_nficha" readonly="readonly" maxlength="200" alt="input para el no. ficha" required="required"  tabindex="9" title="Debe insertar el no. ficha" placeholder="no. ficha" accesskey="f"/>
+                    </div>    
+                    <div class="ganar_form_par">
+                        <label for="inp_cup">Precio CUP </label>
+                        <input type="text" name="name_cup" id="inp_cup" maxlength="200" readonly="readonly" alt="input para el precio CUP" required="required" tabindex="10" title="Debe insertar el precio CUP" placeholder="precio CUP" accesskey="p"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_cuc">Precio CUC </label>
+                        <input type="text" name="name_cuc" id="inp_cuc" maxlength="200" readonly="readonly" alt="input para el precio CUC"  tabindex="11" required="required" title="Debe insertar el precio CUC" placeholder="precio CUC" accesskey="u"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_color">Color </label>
+                        <input type="text" name="name_color" id="inp_color" maxlength="200" readonly="readonly" alt="input para el color" required="required" tabindex="12" title="Debe insertar el color" placeholder="color" accesskey="o"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="text_des"> Descripci&oacute;n </label>
+                        <textarea name="name_des" id="id_des" tabindex="13" readonly="readonly" alt="input para la descripci&oacute;n" title="Debe insertar una descripci&oacute;n" placeholder="descripci&oacute;n" accesskey="d" required="required"></textarea>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_cant">Cant </label>
+                        <input type="text" name="name_cant" id="inp_cant" maxlength="200" alt="input para la cantidad"  tabindex="14" title="Debe insertar la cantidad" placeholder="cantidad" accesskey="c"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_ancho">Ancho </label>
+                        <input type="text" name="name_ancho" id="inp_ancho" maxlength="200" alt="input para el ancho"  tabindex="15" title="Debe insertar el ancho" placeholder="ancho" accesskey="a"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_alto">Alto </label>
+                        <input type="text" name="name_alto" id="inp_alto" maxlength="200" alt="input para el alto"  tabindex="16" title="Debe insertar el alto" placeholder="alto" accesskey="l"/>
+                    </div>
+                    <div class="ganar_form_boton">
+                        <input type="button" name="name_agregarProducto" id="id_agregarProducto" value="Agregar" accesskey="p" tabindex="17" onclick="agregarProducto()"/>                       
+                    </div> 
+                    <table id="listado_producto" summary="Productos" name="name_listado_producto" class="ganar_tabla_list ganar_tabla_linkcenter">
+                        <tr  id="fila_Cabecera_producto" class="ganar_oculto">
+                            <th scope="col">
+                                C&oacute;digo
+                            </th>
+                            <th scope="col">
+                                Ficha
+                            </th>
+                            <th scope="col">
+                                Descripci&oacute;n
+                            </th>
+                            <th scope="col">
+                                Ancho
+                            </th>
+                            <th scope="col">
+                                Alto
+                            </th>
+                            <th scope="col">
+                                Cant.
+                            </th>
+                            <th scope="col">
+                                M2.
+                            </th>
+                            <th scope="col">
+                                P. CUC
+                            </th>
+                            <th scope="col">
+                                I. CUC
+                            </th>
+                            <th scope="col">
+                                P. CUP
+                            </th>
+                            <th scope="col">
+                                I. CUP
+                            </th>
+                            <th scope="col">
+                                Eliminar
+                            </th>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="ganar_form_boton">
+                <input type="submit" name="enviar" value="Enviar" accesskey="e" tabindex="18" onclick="return validar()"/>
+                <input type="reset" name="limpiar" value="Restaurar" accesskey="l" tabindex="19"/>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Insertar Comercial{% endblock %}
+{% block body %}
+
+    <!-- Nav tabs -->
+    <ul id="mytab" class="nav nav-tabs">
+        <li class="active"><a href="#DatosGenerales" data-toggle="tab">Datos Generales</a></li>        
+        <li><a href="#Credenciales" data-toggle="tab">Credenciales</a></li>       
+    </ul>
+
+    <form id="formInsertarComercial" method="post" action="ej" class="ganar_form_basico">       
+        <div class="tab-content">
+            <div class="tab-pane active" id="DatosGenerales">
+                <fieldset id="fiel_datosGenerales">                               
+                    <div class="ganar_form_par">
+                        <label for="id_clientes">Vendedor</label>
+                        <select id="id_vendedores" name="name_vendedores" required="required" tabindex="1">
+                            {% for vendedor in vendedores %}
+                                <option value="{{ vendedor.id }}"> {{ vendedor.codigo }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>                
+                    <div class="ganar_form_par">
+                        <label for="inp_nombre">P. Nombre </label>
+                        <input type="text" name="name_nombre" id="inp_nombre" maxlength="200" alt="input para el nombre" required="required" tabindex="2" title="Debe insertar el nombre" placeholder="nombre" accesskey="n"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_snombre">S. Nombre </label>
+                        <input type="text" name="name_snombre" id="inp_snombre" maxlength="200" alt="input para el segundo nombre"  tabindex="3" title="Debe insertar el segundo nombre" placeholder="segundo nombre" accesskey="s"/>
+                    </div>                              
+                    <div class="ganar_form_par">
+                        <label for="inp_apellido">P. Apellido </label>
+                        <input type="text" name="name_apellido" id="inp_apellido" maxlength="200" alt="input para el apellido" required="required" tabindex="4" title="Debe insertar el apellido" placeholder="apellido" accesskey="a"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_sapellido">S. Apellido</label>
+                        <input type="text" name="name_sapellido" id="inp_sapellido" maxlength="200" alt="input para el segundo apellido" required="required" tabindex="5" title="Debe insertar el segundo apellido" placeholder="segundo apellido" accesskey="d"/> 
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_ci">CI</label>
+                        <input type="text" name="name_ci" id="inp_ci" maxlength="11" alt="input el ci" required="required" tabindex="6" title="Debe insertar el ci" placeholder="ci" accesskey="c"/> 
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_telefono">Tel&eacute;fono</label>
+                        <input type="text" name="name_telefono" id="inp_telefono" maxlength="200" alt="input el telefono" required="required" tabindex="7" title="Debe insertar el telefono" placeholder="telefono" accesskey="t"/> 
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_correo">Correo</label>
+                        <input type="email" name="name_correo" id="inp_correo" maxlength="200" alt="input el correo"  tabindex="8" title="Debe insertar el correo" placeholder="correo" accesskey="c"/> 
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_cargo">Cargo</label>
+                        <input type="text" name="name_cargo" id="inp_cargo" maxlength="200" alt="input el cargo" required="required" tabindex="9" title="Debe insertar el cargo" placeholder="cargo" accesskey="o"/> 
+                    </div>                    
+                </fieldset> 
+            </div>
+            <div class="tab-pane" id="Credenciales">
+                <fieldset id="fiel_Credenciales"> 
+                    <div class="ganar_form_par">
+                        <label for="inp_usuario"> Usuario  </label>
+                        <input type="text" name="name_usuario" id="inp_usuario" maxlength="200" alt="input para el usuario" required tabindex="10" title="Debe insertar usuario" placeholder="usuario" accesskey="u"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="id_roles">Tipo</label>
+                        <select id="id_roles" name="name_roles" required="required" tabindex="11">                            
+                                <option value="Administrador"> Administrador </option> 
+                                <option value="Comercial"> Comercial </option>
+                        </select>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_pass"> Contras. </label>
+                        <input type="password" name="name_pass" id="inp_pass" maxlength="200" alt="input para la clave" required tabindex="12" title="Debe insertar la clave" placeholder="clave" accesskey="c"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_rpass"> Re. Contras. </label>
+                        <input type="password" name="name_rpass" id="inp_rpass" maxlength="200" alt="input para repetir la clave" required tabindex="13" title="Debe repetir la clave" placeholder="repetir clave" accesskey="r"/>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="ganar_form_boton">
+                <input type="submit" name="enviar" value="Enviar" accesskey="e" tabindex="14"/>
+                <input type="reset" name="limpiar" value="Restaurar" accesskey="l" tabindex="15"/>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

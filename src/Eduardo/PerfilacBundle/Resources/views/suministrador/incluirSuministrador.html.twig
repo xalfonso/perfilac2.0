@@ -1,0 +1,18 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Insertar Suministrador{% endblock %}
+{% block body %}
+    <form id="formInsertarSuministrador" method="post" action="ej" class="ganar_form_basico">
+        <fieldset>
+            <legend>Insertar Suministrador</legend>
+            <div class="ganar_form_par">
+                <label for="inp_nombre"> Nombre </label> <br />
+                <input type="text" size="70" name="inp_nombre" id="inp_nombre" maxlength="200" alt="input para el nombre" required tabindex="1" title="Debe insertar el nombre" placeholder="nombre" accesskey="n"/> <br />
+            </div>
+            <div class="ganar_form_boton">
+                <input type="submit" name="enviar" value="Enviar" accesskey="e" />
+                <input type="reset" name="limpiar" value="Restaurar" accesskey="l" />
+            </div>
+        </fieldset>
+
+    </form>
+{% endblock %}    

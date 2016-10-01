@@ -1,0 +1,66 @@
+{# vista modificada apartir del archivo simple-paginator-list-view.html.twig del bundle SimplePaginatorBundle#}
+<div>
+<ul class="{{ container_class }}">
+    <!-- FIRST -->
+    {% if currentPage > 1 %}
+        {% set rParams =  {'page': firstPage, 'paginatorId': id} | merge(routeParams) %}
+        <li class="{{ firstEnabledClass }}">
+            <a href="{{ path(route, rParams) }}"><span class="glyphicon glyphicon-fast-backward"></span></a>
+        </li>
+    {% else %}
+        <li class="{{ firstDisabledClass }}">
+            <a href="#" ><span class="glyphicon glyphicon-fast-backward"></span></a>
+        </li>
+    {% endif %}
+
+    <!-- PREVIOUS -->
+    {% if currentPage > 1 %}   
+        {% set rParams =  {'page': previousPage, 'paginatorId': id} | merge(routeParams) %}
+        <li class="{{ previousEnabledClass }}">
+            <a href="{{ path(route, rParams) }}"><span class="glyphicon glyphicon-backward"></span></a>
+        </li>
+    {% else %}
+        <li class="{{ previousDisabledClass }}">
+            <a href="#" ><span class="glyphicon glyphicon-backward"></span></a>
+        </li>
+    {% endif %}
+
+    <!-- NUMBERS -->
+    {% for page in minPage..maxPage %}
+        {% if page == currentPage %}
+            <li class="{{ currentClass }}">
+                <a href="#" >{{ page }}</a>
+            </li>
+        {% else %}
+            {% set rParams =  {'page': page, 'paginatorId': id} | merge(routeParams) %}
+            <li>
+                <a href="{{ path(route, rParams) }}">{{ page }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    <!-- NEXT -->
+    {% if currentPage < lastPage %}
+        {% set rParams =  {'page': nextPage, 'paginatorId': id} | merge(routeParams) %}
+        <li class="{{ nextEnabledClass }}">
+            <a href="{{ path(route, rParams) }}"><span class="glyphicon glyphicon-forward"></a>
+        </li>
+    {% else %}
+        <li class="{{ nextDisabledClass }}">
+            <a href="#" ><span class="glyphicon glyphicon-forward"></a>
+        </li>
+    {% endif %}
+
+    <!-- LAST -->
+    {% if currentPage < lastPage %}
+        {% set rParams =  {'page': lastPage, 'paginatorId': id} | merge(routeParams) %}
+        <li class="{{ lastEnabledClass }}">
+            <a href="{{ path(route, rParams) }}"> <span class="glyphicon glyphicon-fast-forward"></span> </a>
+        </li>
+    {% else %}
+        <li class="{{ lastDisabledClass }}">
+            <a href="#" ><span class="glyphicon glyphicon-fast-forward"></span></a>
+        </li>
+    {% endif %}
+</ul>
+    </div>

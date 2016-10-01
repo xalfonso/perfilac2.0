@@ -1,0 +1,7 @@
+parameters:
+#    perfilac.example.class: Eduardo\PerfilacBundle\Example
+
+services:
+#    perfilac.example:
+#        class: %perfilac.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

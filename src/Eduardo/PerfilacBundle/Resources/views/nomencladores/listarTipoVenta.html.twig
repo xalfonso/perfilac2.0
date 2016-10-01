@@ -1,0 +1,42 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Tipo de Venta{% endblock %}
+{% block body %}
+<table id="listado_tipoVenta" summary="Tipo Moneda" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Tipos de Venta</caption>
+        <tr>
+            <th scope="col">
+                Nombre
+            </th>
+          {#   {% if is_granted('ROLE_ADMINISTRADOR') %}  #}
+                <th scope="col">
+                    Editar
+                </th>
+           {# {% endif %}#}
+        </tr>
+        {% for tipoVenta in tiposVenta %}
+            <tr>
+                <td>
+                    {{ tipoVenta.nombre }}
+                </td>
+              {#   {% if is_granted('ROLE_ADMINISTRADOR') %}#}
+                    <td>
+                        <a href="{{ path('tipoVentaModificar', {'id':tipoVenta.id}) }}">Editar</a>
+                    </td>
+               {#  {% endif %}#}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('tipoVentaListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}  

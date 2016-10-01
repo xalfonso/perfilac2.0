@@ -1,0 +1,109 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Venta{% endblock %}
+{% block body %}
+
+    <table id="listado_ventas" summary="Ventas" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Ventas</caption>
+        <tr>
+            <th scope="col">
+                No.
+            </th>
+            <th scope="col">
+                Fecha
+            </th>
+            <th scope="col">
+                Tipo
+            </th>
+            <th scope="col">
+                Cliente
+            </th>
+            <th scope="col">
+                Obra
+            </th>
+            <th scope="col">
+                Representante
+            </th>
+            <th scope="col">
+                Cant. Prod.
+            </th>
+            <th scope="col">
+                Imp. CUC
+            </th>
+            <th scope="col">
+                Imp. CUP
+            </th>
+            <th scope="col">
+                Imp. Total
+            </th>
+            <th scope="col">
+                Ver
+            </th>
+            {#{% if is_granted('ROLE_ADMINISTRADOR') %}#}
+            <th scope="col">
+                Edit
+            </th>
+            {#{% endif %}#}
+            <th scope="col">
+                Eli
+            </th>
+        </tr>
+        {% for venta in ventas %}
+            <tr>
+                <td>
+                    {{ venta.numero }}
+                </td>
+                <td>
+                    {{ venta.fechaString }}
+                </td>
+                <td>
+                    {{ venta.tipoVenta }}
+                </td>
+                <td>
+                   {{ venta.cliente.nombre }}
+                </td>
+                <td>
+                   {{ venta.obra }}
+                </td>
+                <td>
+                    {{ venta.representante.nombreCompleto }}
+                </td>
+                <td>
+                    {{ venta.cantProductos }}
+                </td>
+                <td>
+                    {{ venta.importeCUC }}
+                </td>
+                <td>
+                    {{ venta.importeCUP }}
+                </td>
+                <td>
+                    {{ venta.importeTotal }}
+                </td>
+                <td>
+                    <a  onclick="abrirFactura('{{ path('ventaVer', {'id':venta.id}) }}')" >Ver</a>
+                </td>
+                {# {% if is_granted('ROLE_ADMINISTRADOR') %} #}
+                <td>
+                    <a  href="{{ path('ventaModificar', {'id':venta.id}) }}">Edit</a>
+                </td>
+                {# {% endif %} #}
+                <td>
+                    <a  href="{{ path('ventaEliminar', {'id':venta.id}) }}">Eli</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('ventaListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}

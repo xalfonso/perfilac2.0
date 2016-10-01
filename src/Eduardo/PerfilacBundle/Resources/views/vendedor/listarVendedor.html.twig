@@ -1,0 +1,73 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Vendedor{% endblock %}
+{% block body %}
+
+    <table id="listado_vendedores" summary="Vendedores" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Vendedores</caption>
+        <tr>
+            <th scope="col">
+                G. Empre.
+            </th>
+            <th scope="col">
+                Empresa
+            </th>
+            <th scope="col">
+                Taller
+            </th>
+            <th scope="col">
+                NIT
+            </th>
+            <th scope="col">
+                C&oacute;digo
+            </th>
+            <th scope="col">
+                Direcci&oacute;n
+            </th>
+            {#{% if is_granted('ROLE_ADMINISTRADOR') %}#}
+            <th scope="col">
+                Editar
+            </th>
+            {#{% endif %}#}
+        </tr>
+        {% for vendedor in vendedores %}
+            <tr>
+                <td>
+                    {{ vendedor.grupoEmpresarial }}
+                </td>
+                <td>
+                    {{ vendedor.empresa }}
+                </td>
+                <td>
+                    {{ vendedor.taller }}
+                </td>
+                <td>
+                    {{ vendedor.nit }}
+                </td>
+                <td>
+                    {{ vendedor.codigo }}
+                </td>
+                <td>
+                    {{ vendedor.direccionEmpresa }}
+                </td>
+                {# {% if is_granted('ROLE_ADMINISTRADOR') %} #}
+                <td>
+                    <a href="{{ path('vendedorModificar', {'id':vendedor.id}) }}">Editar</a>
+                </td>
+                {# {% endif %} #}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('vendedorListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}

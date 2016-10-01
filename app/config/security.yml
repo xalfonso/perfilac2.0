@@ -1,0 +1,120 @@
+security:
+
+    firewalls:
+
+        secured_area:
+
+            pattern:    ^/
+
+            anonymous: ~
+
+            form_login:
+                
+                login_path:  perfilac_homepage
+
+                check_path:  autenticar
+                
+            logout:
+
+                path:   /logout
+
+                target: /inicio
+    #herencia de roles, Un administrador tambien es un comercial
+    role_hierarchy:
+        ROLE_ADMINISTRADOR: ROLE_COMERCIAL
+
+    access_control:
+     #Vendedor
+        - { path: /vendedor/incluir, roles: ROLE_ADMINISTRADOR}
+        - { path: /vendedor/listar, roles:  ROLE_COMERCIAL}
+        - { path: /vendedor/modificar, roles: ROLE_ADMINISTRADOR}
+        - { path: /vendedor/actualizar, roles: ROLE_ADMINISTRADOR}
+        - { path: /vendedor/listarMunicipioProvinciaAjax, roles: ROLE_ADMINISTRADOR}
+     #Comercial
+        - { path: /comercial/incluir, roles: ROLE_ADMINISTRADOR}
+        - { path: /comercial/listar, roles:  ROLE_COMERCIAL}
+        - { path: /comercial/modificar, roles: ROLE_ADMINISTRADOR}
+        - { path: /comercial/actualizar, roles: ROLE_ADMINISTRADOR} 
+     #Provincia
+        - { path: /provincia/incluir, roles: ROLE_COMERCIAL}
+        - { path: /provincia/listar, roles: ROLE_COMERCIAL}
+        - { path: /provincia/modificar, roles: ROLE_COMERCIAL}
+        - { path: /provincia/actualizar, roles: ROLE_COMERCIAL}
+     #Municipio
+        - { path: /municipio/incluir, roles: ROLE_COMERCIAL}
+        - { path: /municipio/listar, roles: ROLE_COMERCIAL}
+        - { path: /municipio/modificar, roles: ROLE_COMERCIAL}
+        - { path: /municipio/actualizar, roles: ROLE_COMERCIAL}
+     #TipoMoneda
+        - { path: /tipomoneda/incluir, roles: ROLE_COMERCIAL}
+        - { path: /tipomoneda/listar, roles: ROLE_COMERCIAL}
+        - { path: /tipomoneda/modificar, roles: ROLE_COMERCIAL}
+        - { path: /tipomoneda/actualizar, roles: ROLE_COMERCIAL}
+     #TipoProducto
+        - { path: /tipoproducto/incluir, roles: ROLE_COMERCIAL}
+        - { path: /tipoproducto/listar, roles: ROLE_COMERCIAL}
+        - { path: /tipoproducto/modificar, roles: ROLE_COMERCIAL}
+        - { path: /tipoproducto/actualizar, roles: ROLE_COMERCIAL}
+     #TipoEnchape
+        - { path: /tipoenchape/incluir, roles: ROLE_COMERCIAL}
+        - { path: /tipoenchape/listar, roles: ROLE_COMERCIAL}
+        - { path: /tipoenchape/modificar, roles: ROLE_COMERCIAL}
+        - { path: /tipoenchape/actualizar, roles: ROLE_COMERCIAL}
+     #TipoVenta
+        - { path: /tipoventa/incluir, roles: ROLE_COMERCIAL}
+        - { path: /tipoventa/listar, roles: ROLE_COMERCIAL}
+        - { path: /tipoventa/modificar, roles: ROLE_COMERCIAL}
+        - { path: /tipoventa/actualizar, roles: ROLE_COMERCIAL}
+     #Suministrador
+        - { path: /suministrador/incluir, roles: ROLE_COMERCIAL}
+        - { path: /suministrador/listar, roles: ROLE_COMERCIAL}
+        - { path: /suministrador/modificar, roles: ROLE_COMERCIAL}
+        - { path: /suministrador/actualizar, roles: ROLE_COMERCIAL}
+     #Cliente
+        - { path: /cliente/incluir, roles: ROLE_COMERCIAL}
+        - { path: /cliente/listar, roles: ROLE_COMERCIAL}
+        - { path: /cliente/modificar, roles: ROLE_COMERCIAL}
+        - { path: /cliente/actualizar, roles: ROLE_COMERCIAL}
+        - { path: /cliente/listarMunicipioProvinciaAjax, roles: ROLE_COMERCIAL}
+     #Representante
+        - { path: /representante/incluir, roles: ROLE_COMERCIAL}
+        - { path: /representante/listar, roles: ROLE_COMERCIAL}
+        - { path: /representante/modificar, roles: ROLE_COMERCIAL}
+        - { path: /representante/actualizar, roles: ROLE_COMERCIAL}
+     #Venta
+        - { path: /venta/incluir, roles: ROLE_COMERCIAL}
+        - { path: /venta/listar, roles: ROLE_COMERCIAL}
+        - { path: /venta/modificar, roles: ROLE_COMERCIAL}
+        - { path: /venta/actualizar, roles: ROLE_COMERCIAL}
+        - { path: /venta/eliminar, roles: ROLE_COMERCIAL}
+        - { path: /venta/ver, roles: ROLE_COMERCIAL}
+     #Producto
+        - { path: /producto/incluir, roles: ROLE_COMERCIAL}
+        - { path: /producto/listar, roles: ROLE_COMERCIAL}
+        - { path: /producto/modificar, roles: ROLE_COMERCIAL}
+        - { path: /producto/actualizar, roles: ROLE_COMERCIAL}
+          
+    providers:
+
+        chain_provider:
+
+            chain:
+
+                providers: [in_memory, user_db]
+
+        in_memory:
+
+            memory:
+
+                users:
+
+                    superadmin: { password: superadmin, roles: 'ROLE_ADMINISTRADOR'}                    
+
+        user_db:
+
+            entity: { class: Eduardo\PerfilacBundle\Entity\Usuario, property: username }
+            
+            
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Eduardo\PerfilacBundle\Entity\Usuario: sha512

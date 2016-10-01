@@ -1,0 +1,85 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Producto{% endblock %}
+{% block body %}
+
+    <table id="listado_productos" summary="Productos" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Productos</caption>
+        <tr>
+            <th scope="col">
+                Tipo
+            </th>
+            <th scope="col">
+                T. Enchape
+            </th>
+            <th scope="col">
+                Suministrador
+            </th>
+            <th scope="col">
+                C&oacute;digo
+            </th>
+            <th scope="col">
+                No. Ficha
+            </th>
+            <th scope="col">
+                P. CUP
+            </th>
+            <th scope="col">
+                P. CUC
+            </th>
+            <th scope="col">
+                Color
+            </th>
+            {#{% if is_granted('ROLE_ADMINISTRADOR') %}#}
+            <th scope="col">
+                Editar
+            </th>
+            {#{% endif %}#}
+        </tr>
+        {% for producto in productos %}
+            <tr>
+                <td>
+                    {{ producto.tipoProducto }}
+                </td>
+                <td>
+                    {{ producto.tipoEnchape }}
+                </td>
+                <td>
+                    {{ producto.suministrador }}
+                </td>
+                <td>
+                   {{ producto.codigo }}
+                </td>
+                <td>
+                    {{ producto.noFicha }}
+                </td>
+                <td>
+                    {{ producto.precioCUP }}
+                </td>
+                <td>
+                    {{ producto.precioCUC }}
+                </td>
+                <td>
+                    {{ producto.color }}
+                </td>
+                {# {% if is_granted('ROLE_ADMINISTRADOR') %} #}
+                <td>
+                    <a href="{{ path('productoModificar', {'id':producto.id}) }}">Editar</a>
+                </td>
+                {# {% endif %} #}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('productoListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}

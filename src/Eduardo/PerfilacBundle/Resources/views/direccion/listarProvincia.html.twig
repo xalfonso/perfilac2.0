@@ -1,0 +1,42 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Provincia{% endblock %}
+{% block body %}
+<table id="listado_provincia" summary="Provincia" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Provincias</caption>
+        <tr>
+            <th scope="col">
+                Nombre
+            </th>
+          {#   {% if is_granted('ROLE_ADMINISTRADOR') %}  #}
+                <th scope="col">
+                    Editar
+                </th>
+           {# {% endif %}#}
+        </tr>
+        {% for provincia in provincias %}
+            <tr>
+                <td>
+                    {{ provincia.nombre }}
+                </td>
+              {#   {% if is_granted('ROLE_ADMINISTRADOR') %}#}
+                    <td>
+                        <a href="{{ path('provinciaModificar', {'id':provincia.id}) }}">Editar</a>
+                    </td>
+               {#  {% endif %}#}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('provinciaListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}  

@@ -1,0 +1,32 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: '3306'
+    database_name: bdperf
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: es
+    secret: e9a3ddc2a10fdfcaa5bd6ceeba9c4de21
+    ztec.security.active_directory.settings: { account_suffix: uci.cu, base_dn: 'OU=UCI Domain Users, DC=uci,DC=cu', domain_controllers: [uci.cu], admin_username: ad.search, admin_password: uF2SODWAHiW0eJboFFQEAvVzJ, real_primarygroup: true, use_ssl: false, use_tls: false, recursive_groups: false, sso: false, username_patterns: ['/([^@]*)@uci.cu/i', '/uci\\(.*)/i', '/uci.cu\\(.*)/i', '/(.*)/i'] }
+    database_path: null
+    # database_path: symfony
+#    ztec.security.active_directory.settings:
+#        account_suffix : "uci.cu" # without the @ at the beginning
+#        base_dn : "OU=UCI Domain Users, DC=uci,DC=cu" #The DN of the domain
+#        domain_controllers : ["uci.cu"] #Servers to use for ldap connexion (Random)
+#        admin_username: "ad.search" 
+#        admin_password: "uF2SODWAHiW0eJboFFQEAvVzJ" 
+#        real_primarygroup : true #For Linux compatibility.
+#        use_ssl : false #Set it true need configuration of the server to be usefull
+#        use_tls : false #Set it true need configuration of the server to be usefull
+#        recursive_groups : false #Used Only for group test (not userInfo)
+#        sso : false #Use NTML. Not yet compatible with Symfony !!!
+#        username_patterns: 
+#            - /([^@]*)@uci.cu/i   # like toto@uci.cu
+#            - /uci\\(.*)/i        #like uci\toto
+#            - /uci.cu\\(.*)/i     #like uci.cu\toto
+#            - /(.*)/i #like toto

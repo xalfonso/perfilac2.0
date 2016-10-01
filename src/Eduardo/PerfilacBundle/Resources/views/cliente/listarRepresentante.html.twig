@@ -1,0 +1,85 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Representante{% endblock %}
+{% block body %}
+
+    <table id="listado_representantes" summary="Representantes" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Representantes</caption>
+        <tr>
+            <th scope="col">
+                Cliente
+            </th>
+            <th scope="col">
+                P. Nombre
+            </th>
+            <th scope="col">
+                S. Nombre
+            </th>
+            <th scope="col">
+                P. Apellido
+            </th>
+            <th scope="col">
+                S. Apellido
+            </th>
+            <th scope="col">
+                Tel&eacute;fono
+            </th>
+            <th scope="col">
+                Correo
+            </th>
+            <th scope="col">
+                Cargo
+            </th>
+            {#{% if is_granted('ROLE_ADMINISTRADOR') %}#}
+            <th scope="col">
+                Editar
+            </th>
+            {#{% endif %}#}
+        </tr>
+        {% for representante in representantes %}
+            <tr>
+                <td>
+                    {{ representante.cliente.nombre }}
+                </td>
+                <td>
+                    {{ representante.primerNombre }}
+                </td>
+                <td>
+                    {{ representante.segundoNombre }}
+                </td>
+                <td>
+                   {{ representante.primerApellido }}
+                </td>
+                <td>
+                    {{ representante.segundoApellido }}
+                </td>
+                <td>
+                    {{ representante.telefono }}
+                </td>
+                <td>
+                    {{ representante.correo }}
+                </td>
+                <td>
+                    {{ representante.cargo }}
+                </td>
+                {# {% if is_granted('ROLE_ADMINISTRADOR') %} #}
+                <td>
+                    <a href="{{ path('representanteModificar', {'id':representante.id}) }}">Editar</a>
+                </td>
+                {# {% endif %} #}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('representanteListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}

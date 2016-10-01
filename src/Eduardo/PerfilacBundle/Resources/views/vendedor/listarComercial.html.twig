@@ -1,0 +1,91 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Comercial{% endblock %}
+{% block body %}
+
+    <table id="listado_comerciales" summary="Comerciales" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Comerciales</caption>
+        <tr>
+            <th scope="col">
+                Taller
+            </th>
+            <th scope="col">
+                P. Nombre
+            </th>
+            <th scope="col">
+                S. Nombre
+            </th>
+            <th scope="col">
+                P. Apellido
+            </th>
+            <th scope="col">
+                S. Apellido
+            </th>
+            <th scope="col">
+                Tel&eacute;fono
+            </th>
+            <th scope="col">
+                Correo
+            </th>
+            <th scope="col">
+                Cargo
+            </th>
+            <th scope="col">
+                Usuario
+            </th>
+            {#{% if is_granted('ROLE_ADMINISTRADOR') %}#}
+            <th scope="col">
+                Editar
+            </th>
+            {#{% endif %}#}
+        </tr>
+        {% for comercial in comerciales %}
+            <tr>
+                <td>
+                    {{ comercial.vendedor.taller }}
+                </td>
+                <td>
+                    {{ comercial.primerNombre }}
+                </td>
+                <td>
+                    {{ comercial.segundoNombre }}
+                </td>
+                <td>
+                   {{ comercial.primerApellido }}
+                </td>
+                <td>
+                    {{ comercial.segundoApellido }}
+                </td>
+                <td>
+                    {{ comercial.telefono }}
+                </td>
+                <td>
+                    {{ comercial.correo }}
+                </td>
+                <td>
+                    {{ comercial.cargo }}
+                </td>
+                <td>
+                    {{ comercial.usuario.username }}
+                </td>
+                {# {% if is_granted('ROLE_ADMINISTRADOR') %} #}
+                <td>
+                    <a href="{{ path('comercialModificar', {'id':comercial.id}) }}">Editar</a>
+                </td>
+                {# {% endif %} #}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('comercialListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}

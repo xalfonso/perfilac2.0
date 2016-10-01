@@ -1,0 +1,199 @@
+perfilac_homepage:
+    pattern:  /inicio
+    defaults: { _controller: PerfilacBundle:Default:index }
+autenticar:
+         path: /autenticar
+logout:
+         path: /logout
+#Vendedor
+vendedorIncluir:
+         path: /vendedor/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Vendedor:incluir }
+vendedorListar:
+         path: /vendedor/listar
+         defaults: { _controller: PerfilacBundle:Vendedor:listar }
+vendedorModificar:
+         path: /vendedor/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Vendedor:modificar }
+vendedorActualizar:
+         path: /vendedor/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Vendedor:actualizar }
+vendedorListarMunicipioProvinciaAjax:
+         path: /vendedor/listarMunicipioProvinciaAjax/{idProvincia}
+         defaults: { _controller: PerfilacBundle:Vendedor:listarMunicipioProvinciaAjax }
+#Comercial
+comercialIncluir:
+         path: /comercial/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Comercial:incluir }
+comercialListar:
+         path: /comercial/listar
+         defaults: { _controller: PerfilacBundle:Comercial:listar }
+comercialModificar:
+         path: /comercial/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Comercial:modificar }
+comercialActualizar:
+         path: /comercial/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Comercial:actualizar }
+#Provincia
+provinciaIncluir:
+         path: /provincia/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Provincia:incluir }
+provinciaListar:
+         path: /provincia/listar
+         defaults: { _controller: PerfilacBundle:Provincia:listar }
+provinciaModificar:
+         path: /provincia/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Provincia:modificar }
+provinciaActualizar:
+         path: /provincia/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Provincia:actualizar }
+#Municipio
+municipioIncluir:
+         path: /municipio/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Municipio:incluir }
+municipioListar:
+         path: /municipio/listar
+         defaults: { _controller: PerfilacBundle:Municipio:listar }
+municipioModificar:
+         path: /municipio/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Municipio:modificar }
+municipioActualizar:
+         path: /municipio/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Municipio:actualizar }
+#TipoMoneda
+tipoMonedaIncluir:
+         path: /tipomoneda/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:TipoMoneda:incluir }
+tipoMonedaListar:
+         path: /tipomoneda/listar
+         defaults: { _controller: PerfilacBundle:TipoMoneda:listar }
+tipoMonedaModificar:
+         path: /tipomoneda/modificar/{id}
+         defaults: { _controller: PerfilacBundle:TipoMoneda:modificar }
+tipoMonedaActualizar:
+         path: /tipomoneda/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:TipoMoneda:actualizar }
+#TipoProducto
+tipoProductoIncluir:
+         path: /tipoproducto/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:TipoProducto:incluir }
+tipoProductoListar:
+         path: /tipoproducto/listar
+         defaults: { _controller: PerfilacBundle:TipoProducto:listar }
+tipoProductoModificar:
+         path: /tipoproducto/modificar/{id}
+         defaults: { _controller: PerfilacBundle:TipoProducto:modificar }
+tipoProductoActualizar:
+         path: /tipoproducto/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:TipoProducto:actualizar }
+#TipoEnchape
+tipoEnchapeIncluir:
+         path: /tipoenchape/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:TipoEnchape:incluir }
+tipoEnchapeListar:
+         path: /tipoenchape/listar
+         defaults: { _controller: PerfilacBundle:TipoEnchape:listar }
+tipoEnchapeModificar:
+         path: /tipoenchape/modificar/{id}
+         defaults: { _controller: PerfilacBundle:TipoEnchape:modificar }
+tipoEnchapeActualizar:
+         path: /tipoenchape/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:TipoEnchape:actualizar }
+         
+#TipoVenta
+tipoVentaIncluir:
+         path: /tipoventa/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:TipoVenta:incluir }
+tipoVentaListar:
+         path: /tipoventa/listar
+         defaults: { _controller: PerfilacBundle:TipoVenta:listar }
+tipoVentaModificar:
+         path: /tipoventa/modificar/{id}
+         defaults: { _controller: PerfilacBundle:TipoVenta:modificar }
+tipoVentaActualizar:
+         path: /tipoventa/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:TipoVenta:actualizar }
+#Suministrador
+suministradorIncluir:
+         path: /suministrador/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Suministrador:incluir }
+suministradorListar:
+         path: /suministrador/listar
+         defaults: { _controller: PerfilacBundle:Suministrador:listar }
+suministradorModificar:
+         path: /suministrador/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Suministrador:modificar }
+suministradorActualizar:
+         path: /suministrador/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Suministrador:actualizar }
+         
+#Cliente
+clienteIncluir:
+         path: /cliente/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Cliente:incluir }
+clienteListar:
+         path: /cliente/listar
+         defaults: { _controller: PerfilacBundle:Cliente:listar }
+clienteModificar:
+         path: /cliente/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Cliente:modificar }
+clienteActualizar:
+         path: /cliente/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Cliente:actualizar }
+clienteListarMunicipioProvinciaAjax:
+         path: /cliente/listarMunicipioProvinciaAjax/{idProvincia}
+         defaults: { _controller: PerfilacBundle:Cliente:listarMunicipioProvinciaAjax }
+#Representante
+representanteIncluir:
+         path: /representante/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Representante:incluir }
+representanteListar:
+         path: /representante/listar
+         defaults: { _controller: PerfilacBundle:Representante:listar }
+representanteModificar:
+         path: /representante/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Representante:modificar }
+representanteActualizar:
+         path: /representante/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Representante:actualizar }
+#Venta
+ventaIncluir:
+         path: /venta/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Venta:incluir }
+ventaListar:
+         path: /venta/listar
+         defaults: { _controller: PerfilacBundle:Venta:listar }
+ventaModificar:
+         path: /venta/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Venta:modificar }
+ventaVer:
+         path: /venta/ver/{id}
+         defaults: { _controller: PerfilacBundle:Venta:ver}
+ventaActualizar:
+         path: /venta/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Venta:actualizar } 
+ventaEliminar:
+         path: /venta/eliminar/{id}
+         defaults: { _controller: PerfilacBundle:Venta:eliminar } 
+ventaListarRepresentanteClienteAjax:
+         path: /venta/listarRepresentanteClienteAjax/{idCliente}
+         defaults: { _controller: PerfilacBundle:Venta:listarRepresentanteClienteAjax }
+ventaListarDetalleProductoAjax:
+         path: /venta/listarDetalleProductoAjax/{idProducto}
+         defaults: { _controller: PerfilacBundle:Venta:listarDetalleProductoAjax }
+ventaListarProductosAjax:
+         path: /venta/listarProductosAjax/{idTipoProducto}/{idTipoEnchape}
+         defaults: { _controller: PerfilacBundle:Venta:listarProductosAjax }
+#Producto
+productoIncluir:
+         path: /producto/incluir/{accion}
+         defaults: { _controller: PerfilacBundle:Producto:incluir }
+productoListar:
+         path: /producto/listar
+         defaults: { _controller: PerfilacBundle:Producto:listar }
+productoModificar:
+         path: /producto/modificar/{id}
+         defaults: { _controller: PerfilacBundle:Producto:modificar }
+productoActualizar:
+         path: /producto/actualizar/{id}
+         defaults: { _controller: PerfilacBundle:Producto:actualizar }          

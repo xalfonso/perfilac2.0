@@ -1,0 +1,48 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Listar Municipio{% endblock %}
+{% block body %}
+<table id="listado_municipio" summary="Provincia" class="ganar_tabla_list ganar_tabla_linkcenter">
+        <caption>Municipios</caption>
+        <tr>
+            <th scope="col">
+                Nombre
+            </th>
+             <th scope="col">
+                Provincia
+            </th>
+          {#   {% if is_granted('ROLE_ADMINISTRADOR') %}  #}
+                <th scope="col">
+                    Editar
+                </th>
+           {# {% endif %}#}
+        </tr>
+        {% for municipio in municipios %}
+            <tr>
+                <td>
+                    {{ municipio.nombre }}
+                </td>
+                 <td>
+                    {{ municipio.provincia.nombre }}
+                </td>
+              {#   {% if is_granted('ROLE_ADMINISTRADOR') %}#}
+                    <td>
+                        <a href="{{ path('municipioModificar', {'id':municipio.id}) }}">Editar</a>
+                    </td>
+               {#  {% endif %}#}
+            </tr>
+        {% endfor %}
+    </table>
+    {#las clases css que se utilizaron en el paginador son de bostrap #}
+    <div class="ganar_paginador_contenedor">
+        {{ simple_paginator_render('municipioListar', null, {
+          'routeParams' : {},
+          'container_class' : 'pagination pagination-sm',
+          'firstDisabledClass':'disabled',
+          'previousDisabledClass' : 'disabled',
+          'currentClass':'active',
+          'nextDisabledClass' : 'disabled',
+          'lastDisabledClass':'disabled'
+        },'PerfilacBundle::ganarSimplePaginador.html.twig')              
+        }}  
+    </div>
+{% endblock %}  

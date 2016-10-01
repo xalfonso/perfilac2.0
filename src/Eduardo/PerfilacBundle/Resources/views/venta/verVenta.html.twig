@@ -1,0 +1,210 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}{{ venta.tipoVenta }} {{ venta.numero }}{% endblock %}
+{% block stylesheets %} 
+    <link rel="stylesheet" href="{{ asset('bundles/perfilac/css/factura.css') }}"  type="text/css" media="all">
+{% endblock %}
+{% block manu %}{% endblock %}
+{% block body %}
+    <table class="normal">
+        <thead>
+            <tr>
+        <caption><strong>{{ venta.vendedor.taller | upper }}</strong></caption>
+    </tr>
+    <tr>
+        <th colspan = "7" rowspan="2"><strong>{{ venta.tipoVenta | upper }}</strong></th>
+        <td colspan = "3"><strong>FECHA DE EMISI&Oacute;N:</strong></td>
+        <td colspan = "2">{{ venta.fechaString }}</td>
+    </tr>
+    <tr>
+        <td colspan = "3"><strong>N&Ugrave;MERO DE FACTURA:</strong></td>
+        <td colspan = "2">{{ venta.numero }}</td>
+    </tr>
+    <tr>
+        <td colspan = "12"><strong>ACREDOR o SUMINISTRADOR:</strong></td>
+    </tr>
+    <tr>
+        <td colspan = "12">{{ venta.vendedor.grupoEmpresarial | upper }}</td>
+    </tr>
+    <tr>
+        <td colspan = "12">{{ venta.vendedor.empresa | upper }}</td>
+    </tr>
+    <tr>
+        <td>Direcci&oacute;n: </td>			
+        <td colspan = "11">{{ venta.vendedor.direccionEmpresa}}</td>
+    </tr>
+    <tr>
+        <td>Tel&eacute;fonos:</td>
+        <td colspan = "6">{{ venta.comercial.telefono}}</td>
+        <td colspan = "2">Email:</td>
+        <td colspan = "5">{{ venta.comercial.correo}}</td>
+    </tr>		
+    <tr>
+        <td>Cuenta CUP:</td>
+        <td colspan = "6">{{ venta.vendedor.nombrecuentaCUP}}</td>
+        <td colspan = "5">{{ venta.vendedor.cuentaCUP}}</td>
+    </tr>
+    <tr>
+        <td>Cuenta CUC:</td>
+        <td colspan = "6">{{ venta.vendedor.nombrecuentaCUC}}</td>
+        <td colspan = "5">{{ venta.vendedor.cuentaCUC}}</td>
+    </tr>
+    <tr>
+        <td>C&oacute;digo (REEUP): </td>
+        <td colspan = "3">{{ venta.vendedor.codigo}}</td>
+        <td>C&oacute;digo NIT: </td>
+        <td colspan = "2">{{ venta.vendedor.nit}}</td>
+        <td colspan = "2">Sucursal de cr&eacute;dito:</td>
+        <td colspan = "3">{{ venta.vendedor.sucursal}}</td>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td colspan = "12"><strong>DEUDOR o RECEPTOR:</strong></td>
+    </tr>
+    <tr>
+        <td colspan = "12">{{ venta.cliente.nombre }}</td>
+    </tr>
+    <tr>
+        <td>Direcci&oacute;n: </td>			
+        <td colspan = "11">{{ venta.cliente.direccion }}</td>
+    </tr>
+    <tr>
+        <td>Tel&eacute;fonos:</td>
+        <td colspan = "3">{{ venta.representante.telefono }}</td>
+        <td>Cuenta CUP:</td>
+        <td colspan = "3">{{ venta.cliente.cuentaCUP }}</td>
+        <td>C&oacute;digo (REEUP): </td>
+        <td colspan = "3"> {{ venta.cliente.codigo }}</td>
+    </tr>		
+    <tr>
+        <td>Email:</td>
+        <td colspan = "3">{{ venta.representante.correo }}</td>
+        <td>Cuenta CUC:</td>
+        <td colspan = "3">{{ venta.cliente.cuentaCUC }}</td>
+        <td>C&oacute;digo NIT: </td>
+        <td colspan = "3">{{ venta.cliente.nit }}</td>
+    </tr>
+    <tr>
+        <td>Contrato No.</td>
+        <td colspan = "3"> {{ venta.cliente.contrato }}</td>
+        <td>Suplemento No.</td>
+        <td colspan = "3">{{ venta.cliente.suplemento }}</td>
+        <td>Obra:</td>
+        <td colspan = "3">{{ venta.obra }}</td>
+    </tr>
+</tbody>
+<tbody class="nota">
+    <tr>
+        <td colspan ="12"><strong>NOTA:</strong></td>
+    </tr>	 
+    <tr>
+        <td colspan ="12">{{ venta.vendedor.comentarioFactura | upper }}</td>
+    </tr>
+</tbody>
+</table>
+<table class="normal celda_variable">
+ <tfoot>
+    <tr>
+        <th colspan="3" scope="col"><strong>ENTREGADO SUMINISTRADOR</strong></th>
+        <th colspan="5" scope="col"><strong>RECIBIDO TRANSPORTADOR</strong></th>
+        <th colspan="4" scope="col"><strong>RECIBIDO CLIENTE</strong></th>
+    </tr>  
+    <tr>
+        <td colspan = "2">Nombre:</td>
+        <td> {{ venta.comercial.nombreCompleto }}</td>
+        <td>Nombre:</td>
+        <td colspan = "4">{{ venta.nombreTransportador }}</td>
+        <td>Nombre:</td>
+        <td colspan = "3">{{ venta.representante.nombreCompleto }}</td>
+    </tr>
+    <tr>
+        <td colspan = "2">Cargo:</td>
+        <td> {{ venta.comercial.cargo }}</td>
+        <td>CI:</td>
+        <td colspan = "4">{{ venta.ciTransportador }}</td>
+        <td>CI:</td>
+        <td colspan = "3">{{ venta.representante.ci }}</td>
+    </tr>
+    <tr>
+        <td colspan = "2" rowspan="2">Tel&eacute;fono:</td>
+        <td rowspan="2"> {{ venta.comercial.telefono }}</td>
+        <td>Chapa:</td>
+        <td colspan = "2">{{ venta.chapaTransportador }}</td>
+        <td>Lic:</td>
+        <td>{{ venta.licenciaTransportador }}</td>
+        <td>Cargo:</td>
+        <td colspan = "3">{{ venta.representante.cargo }}</td>
+    </tr>
+    <tr>
+        <td>Cargo:</td>
+        <td colspan = "4">{{ venta.cargoTransportador }}</td>
+        <td>Tel&eacute;fono:</td>
+        <td colspan = "3">{{ venta.representante.telefono }}</td>
+    </tr>
+    <tr class="centrado">
+        <td colspan = "2">D / M / A</td>
+        <td>FIRMA:</td>
+        <td colspan = "2">D / M / A</td>
+        <td colspan = "3">FIRMA:</td>
+        <td>D / M / A</td>
+        <td colspan = "3">FIRMA:</td>
+    </tr>
+    <tr>
+        <td colspan = "2">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan = "2">&nbsp;</td>
+        <td colspan = "3">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan = "3">&nbsp;</td>
+    </tr>
+</tfoot>
+<tbody>
+    <tr>
+        <th><strong>C&Oacute;DIGO </strong></th>
+        <th><strong>FICHA</strong></th>
+        <th><strong>DESCRIPCI&Oacute;N </strong></th>
+        <th><strong>ANCHO</strong></th>
+        <th><strong>ALTO</strong></th>
+        <th><strong>M2</strong></th>
+        <th><strong>U/M</strong></th>
+        <th><strong>CANT</strong></th>
+        <th><strong>CUC x M2</strong></th>
+        <th><strong>IMP.<br/>CUC</strong></th>
+        <th><strong>CUP x M2</strong></th>
+        <th><strong>IMP.<br/>CUP</strong></th>
+    </tr>
+    {% for productoVenta in venta.productosVenta %}
+        <tr class="centrado">
+            <td>{{ productoVenta.producto.codigo }} </td>
+            <td>{{ productoVenta.producto.noFicha }}</td>
+            <td>{{ productoVenta.producto.descripcion }} </td>
+            <td>{{ productoVenta.ancho | number_format(2)}}</td>
+            <td>{{ productoVenta.alto | number_format(2)}}</td>
+            <td>{{ productoVenta.metroCuadrados | number_format(2) }}</td>
+            <td>U</td>
+            <td>{{ productoVenta.cant }}</td>
+            <td>{{ productoVenta.producto.precioCUC | number_format(2)}}</td>
+            <td>{{ productoVenta.importeCUC | number_format(2)}}</td>
+            <td>{{ productoVenta.producto.precioCUP | number_format(2) }}</td>
+            <td>{{ productoVenta.importeCUP | number_format(2)}}</td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <th COLSPAN="3" scope="row"><strong>VALOR  EN CUC Y EN CUP</strong></th>
+        <td  COLSPAN="6">&nbsp;</td>
+        <td>{{ venta.importeCUC | number_format(2)}}</td>
+        <td>&nbsp;</td>
+        <td>{{ venta.importeCUP | number_format(2)}}</td>
+    </tr>
+    <tr>
+        <th COLSPAN="3" scope="row"><strong>TOTAL</strong></th>
+        <td><strong>M2</strong></td>
+        <td COLSPAN="2">{{ venta.metrosCuadrados | number_format(2) }}</td>
+        <td><strong>CANT</strong></td>
+        <td COLSPAN="2">{{ venta.cantProductos}}</td>
+        <td><strong>IMP.</strong></td>
+        <td COLSPAN="2">{{ venta.importeTotal | number_format(2)}}</td>
+    </tr>
+</tbody>
+</table>
+{% endblock %}

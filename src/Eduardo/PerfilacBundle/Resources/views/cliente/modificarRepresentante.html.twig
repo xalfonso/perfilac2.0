@@ -1,0 +1,59 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Insertar Representante{% endblock %}
+{% block body %}
+
+    <form id="formModificarRepresentante" method="post" action="{{ path('representanteActualizar', {'id':representante.id}) }}" class="ganar_form_basico">       
+        <fieldset>
+            <legend>Modificar Representante</legend>           
+            <div class="ganar_form_par">
+                <label for="id_clientes">Cliente</label>
+                <select id="id_clientes" name="name_clientes" required="required" tabindex="1">
+                    {% for cliente in clientes %}
+                        {% if  cliente.id == representante.cliente.id %}
+                            <option value="{{ cliente.id }}" selected="selected"> {{ cliente.nombre }} </option>
+                        {%else %}
+                            <option value="{{ cliente.id }}"> {{ cliente.nombre }} </option>
+                        {%endif %}
+                    {% endfor %}
+                </select>
+            </div>                
+            <div class="ganar_form_par">
+                <label for="inp_nombre">P. Nombre </label>
+                <input type="text" name="name_nombre" id="inp_nombre" maxlength="200" alt="input para el nombre" required="required" tabindex="2" title="Debe insertar el nombre" placeholder="nombre" accesskey="n" value="{{ representante.primerNombre }}"/>
+            </div>
+            <div class="ganar_form_par">
+                <label for="inp_snombre">S. Nombre </label>
+                <input type="text" name="name_snombre" id="inp_snombre" maxlength="200" alt="input para el segundo nombre"  tabindex="3" title="Debe insertar el segundo nombre" placeholder="segundo nombre" accesskey="s" value="{{ representante.segundoNombre }}"/>
+            </div>                              
+            <div class="ganar_form_par">
+                <label for="inp_apellido">P. Apellido </label>
+                <input type="text" name="name_apellido" id="inp_apellido" maxlength="200" alt="input para el apellido" required="required" tabindex="4" title="Debe insertar el apellido" placeholder="apellido" accesskey="a" value="{{ representante.primerApellido }}"/>
+            </div>
+            <div class="ganar_form_par">
+                <label for="inp_sapellido">S. Apellido</label>
+                <input type="text" name="name_sapellido" id="inp_sapellido" maxlength="200" alt="input para el segundo apellido" required="required" tabindex="5" title="Debe insertar el segundo apellido" placeholder="segundo apellido" accesskey="d" value="{{ representante.segundoApellido }}"/> 
+            </div>
+            <div class="ganar_form_par">
+                <label for="inp_ci">CI</label>
+                <input type="text" name="name_ci" id="inp_ci" maxlength="11" alt="input el ci" required="required" tabindex="6" title="Debe insertar el ci" placeholder="ci" accesskey="c" value="{{ representante.ci }}"/> 
+            </div>
+            <div class="ganar_form_par">
+                <label for="inp_telefono">Tel&eacute;fono</label>
+                <input type="text" name="name_telefono" id="inp_telefono" maxlength="200" alt="input el telefono" required="required" tabindex="7" title="Debe insertar el telefono"  placeholder="telefono" accesskey="t" value="{{ representante.telefono }}"/> 
+            </div>
+            <div class="ganar_form_par">
+                <label for="inp_correo">Correo</label>
+                <input type="email" name="name_correo" id="inp_correo" maxlength="200" alt="input el correo"  tabindex="8" title="Debe insertar el correo" placeholder="correo" accesskey="c" value="{{ representante.correo }}"/> 
+            </div>
+            <div class="ganar_form_par">
+                <label for="inp_cargo">Cargo</label>
+                <input type="text" name="name_cargo" id="inp_cargo" maxlength="200" alt="input el cargo" required="required" tabindex="9" title="Debe insertar el cargo" placeholder="cargo" accesskey="o" value="{{ representante.cargo }}"/> 
+            </div>
+            <div class="ganar_form_boton">
+                <input type="submit" name="enviar" value="Enviar" accesskey="e" tabindex="10"/>
+                <input type="reset" name="limpiar" value="Restaurar" accesskey="l" tabindex="11"/>
+            </div>
+        </fieldset> 
+    </form>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'PerfilacBundle::index.html.twig' %}
+{% block title %}Modificar Cliente{% endblock %}
+{% block body %}
+
+    <!-- Nav tabs -->
+    <ul id="mytab" class="nav nav-tabs">
+        <li class="active"><a href="#DatosGenerales" data-toggle="tab">Datos Generales</a></li>        
+        <li><a href="#Direccion" data-toggle="tab">Direcci&oacute;n</a></li>       
+    </ul>
+
+
+    <form id="formModificarCliente" method="post" action="{{ path('clienteActualizar', {'id':cliente.id}) }}" class="ganar_form_basico">
+        <div class="tab-content">
+            <div class="tab-pane active" id="DatosGenerales">
+                <fieldset id="fiel_datosGenerales">
+
+                    <div class="ganar_form_par">
+                        <label for="inp_nombre"> Nombre </label>
+                        <input type="text" name="name_nombre" id="inp_nombre" maxlength="200" alt="input para el nombre" required="required" tabindex="1" title="Debe insertar el nombre" placeholder="nombre" accesskey="n" value="{{ cliente.nombre }}"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_codigo"> C&oacute;digo </label>
+                        <input type="text" name="name_codigo" id="inp_codigo" maxlength="200" alt="input para el codigo" required="required" tabindex="2" title="Debe insertar el codigo" placeholder="codigo" accesskey="c" value="{{ cliente.codigo }}"/>
+                    </div>                              
+                    <div class="ganar_form_par">
+                        <label for="inp_contrato"> Contrato </label>
+                        <input type="text" name="name_contrato" id="inp_contrato" maxlength="200" alt="input para el contrato" required="required" tabindex="3" title="Debe insertar el contrato" placeholder="contrato" accesskey="t" value="{{ cliente.contrato }}"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_nit"> NIT </label>
+                        <input type="text" name="name_nit" id="inp_nit" maxlength="200" alt="input para el nit" required="required" tabindex="4" title="Debe insertar el nit" placeholder="nit" accesskey="n" value="{{ cliente.nit }}"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_suplemento"> Suplemento </label>
+                        <input type="text" name="name_suplemento" id="inp_suplemento" maxlength="200" alt="input para el suplemento" required="required" tabindex="5" title="Debe insertar el suplemento" placeholder="suplemento" accesskey="s" value="{{ cliente.suplemento }}"/>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_cuentaCUC"> Cuenta CUC</label>
+                        <input type="text" name="name_cuentaCUC" id="inp_cuentaCUC" maxlength="200" alt="input la cuenta CUC" required="required" tabindex="6" title="Debe insertar la cuenta CUC" placeholder="cuenta CUC" accesskey="u" value="{{ cliente.cuentaCUC }}"/> 
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="inp_cuentaCUP"> Cuenta CUP</label>
+                        <input type="text" name="name_cuentaCUP" id="inp_cuentaCUP" maxlength="200" alt="input para la cuenta CUP" required="required" tabindex="7" title="Debe insertar la cuenta CUP" placeholder="cuenta CUP" accesskey="p" value="{{ cliente.cuentaCUP }}"/> 
+                    </div>
+                </fieldset>
+            </div>        
+            <div class="tab-pane" id="Direccion">
+                <fieldset id="fiel_direccion">
+
+                    <div class="ganar_form_par">
+                        <label for="id_provincias"> Provincia </label>
+                        <select id="id_provincias" name="name_provincias" tabindex="8" required="required">
+                            {% for provincia in provincias %}
+                                {% if  provincia.id == cliente.direccion.provincia.id %}
+                                    <option value="{{ provincia.id }}" selected="selected"> {{ provincia.nombre }} </option>
+                                {%else %}
+                                    <option value="{{ provincia.id }}"> {{ provincia.nombre }} </option>
+                                {%endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="id_municipios"> Municipios </label>
+                        <select id="id_municipios" name="name_municipios" tabindex="9" required="required">
+                            {% for municipio in cliente.direccion.provincia.municipios %}
+                                {% if  municipio.id == cliente.direccion.municipio.id %}
+                                    <option value="{{ municipio.id }}" selected="selected"> {{ municipio.nombre }} </option>
+                                {%else %}
+                                    <option value="{{ municipio.id }}"> {{ municipio.nombre }} </option>
+                                {%endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="ganar_form_par">
+                        <label for="text_dir"> Ubicaci&oacute;n </label>
+                        <textarea name="name_text_dir" id="text_dir" tabindex="10" alt="input para la ubicaci&oacute;n" title="Debe insertar una ubicaci&oacute;n" placeholder="ubicaci&oacute;n" accesskey="u" required="required">{{ cliente.direccion.descripcion }}</textarea>
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <div class="ganar_form_boton">
+                <input type="submit" name="enviar" value="Enviar" accesskey="e" tabindex="11"/>
+                <input type="reset" name="limpiar" value="Restaurar" accesskey="l" tabindex="12"/>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

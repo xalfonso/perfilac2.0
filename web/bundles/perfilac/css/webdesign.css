@@ -1,0 +1,172 @@
+/* CSS Document */
+body {
+	color: #dfebf7;
+	background-color: #356ca5;
+	background-image: url(../images/page_bg.jpg);
+	margin: 0 0 0 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align: center;
+}
+/* DIV */
+.wrapper
+{
+	width: 966px;
+	background-image: url(../images/middle.jpg);
+	background-repeat: repeat-y;
+	margin: auto;
+}
+.header
+{
+	width: 966px;
+	background-image: url(../images/header.jpg);
+	background-repeat: no-repeat;
+}
+.footer
+{
+	width: 966px;
+	background-image: url(../images/footer.jpg);
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+.content
+{
+	width: 966px;
+	padding-bottom: 380px;
+}
+#left {
+	float: left;
+	width: 900px;
+	padding-top: 110px;
+	padding-left: 61px;
+	padding-bottom: 35px;
+	text-align: justify;
+	padding-right: 27px;
+}
+#right {
+	float: left;
+	width: 174px;
+	padding-top: 70px;
+	text-align: left;
+}
+.rmenu_item {
+	background-image: url(../images/menu_bg.gif);
+	background-repeat: repeat-x;
+	padding-top: 9px;
+	height: 8px;
+	margin-left: 2px;
+	padding-right: 2px;
+}
+.webdesign
+{
+	color: #356BA5;
+	background-color: inherit;
+}
+/* TEXT */
+h1
+{
+	margin: 0 0 0 0;
+	font-size: 14px;
+}
+h2
+{
+	margin: 0 0 0 0;
+	font-size: 12px;
+}
+/* LINKS */
+a.rmenu_link, a.rmenu_link:visited
+{
+	color:#f1f7fb;
+	background-color: inherit;
+	text-decoration:none;
+	font-weight:bold;
+	text-transform: capitalize;
+}
+a.rmenu_link:hover
+{
+	color: #F8F210;
+	background-color: inherit;
+	text-decoration: none;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+
+/*incorporaciones propias*/
+
+/*tablas de listar básico*/
+table.ganar_tabla_list{margin: 2ex; margin-left:auto; margin-right:auto; min-width:80%; max-width:100%; box-shadow:0 0 3px 0 #000; border-collapse: collapse; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;}
+
+table.ganar_tabla_list td {text-align:justify; vertical-align:middle; height:2em; text-indent:1ex;}
+
+table.ganar_tabla_list tr:first-child {background: linear-gradient(#8DC804, #7CB204, #5F9B02, #458501);}/*primera fila de la tabla(encabezado)*/
+
+table.ganar_tabla_list th{ text-align:center; font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif; font-size:16px; color:#FFFFFF; text-shadow:1px 1px 1px #000; padding:.5em; line-height:1.2em; font-weight:100; border:1px solid #FFFFFF;}
+
+table.ganar_tabla_list caption {font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif; font-size:20px;line-height:1.2em; color: #FFF9EE; text-shadow:1px 1px 1px #999; margin-bottom:6px; padding:.5em; }
+
+table.ganar_tabla_linkcenter a{display:block; text-align:center;}
+/*end tablas de listar básico*/
+
+/*formulario*/
+.ganar_form_basico fieldset {margin: 5px; margin-left:10px;}
+//.ganar_form_basico fieldset *{margin-right:5px;}
+.ganar_form_basico legend {font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif; font-size:20px;line-height:1.2em; color: #FFF9EE; text-shadow:1px 1px 1px #999; margin-bottom:6px;}
+.ganar_form_basico fieldset label {font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif; font-size:14px;}
+.ganar_form_basico input {width:40%; padding:.5ex; border:1px solid #999; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;}
+.ganar_form_basico select {width:40%; padding:.5ex; border:1px solid #999; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;}
+.ganar_form_basico textarea{width:50%; padding:.5ex; height:15em; border:1px solid #999; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;}
+.ganar_form_basico input:focus, .ganar_form_basico  textarea:focus, .ganar_form_basico  select:focus  { border:1px solid #8DC400;  outline: 0; -webkit-box-shadow: inset 0 1px 4px rgba(141, 196, 0, 0.1), 0 0 8px rgba(141, 196, 0, 1); box-shadow: inset 0 1px 4px rgba(141, 196, 0, 0.1), 0 0 8px rgba(141, 196, 0, 1);}
+
+/*ordenar los elementos por linea*/
+.ganar_form_basico div.ganar_form_par {margin: 0.5em; overflow:hidden;}
+.ganar_form_basico div.ganar_form_par  *{margin:.5em; float:left;}
+.ganar_form_basico div.ganar_form_par  label {width:15%; text-align:right;}
+.ganar_form_basico div.ganar_form_par  label:after {content:":";}
+.ganar_form_basico div.ganar_form_par  div.info-conten {width:80%;}
+.ganar_form_basico div.ganar_form_boton{ position:relative; left:20%; margin-bottom: 1em;}
+
+/*botón verde*/
+.ganar_form_basico input[type=submit]{background: linear-gradient(#D0DBA6, #A8BB59, #6B892E, #526822); color:#FFFFFF; text-shadow:1px 1px 1px #000; width:80px; height:30px; border:1px solid #356801; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;box-shadow:1px 1px 3px 0 #000; font-size:14px; padding:.5ex; margin-bottom:0;}
+.ganar_form_basico input[type=submit]:hover { color:#1C1C1C; cursor:pointer; cursor:hand; text-shadow:0px 0px 0px #000;}
+.ganar_form_basico input[type=submit]:active { position:relative; top:1px; box-shadow:0px 0px 3px 0 #000;}
+
+.ganar_form_basico input[type=button]{background: linear-gradient(#8DC804, #7CB204, #458501, #356801); color:#FFFFFF; text-shadow:1px 1px 1px #000; width:80px; height:30px; border:1px solid #356801; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;box-shadow:1px 1px 3px 0 #000; font-size:14px; padding:.5ex; margin-bottom:0;}
+.ganar_form_basico input[type=button]:hover { color:#1C1C1C; cursor:pointer; cursor:hand; text-shadow:0px 0px 0px #000;}
+.ganar_form_basico input[type=button]:active { position:relative; top:1px; box-shadow:0px 0px 3px 0 #000;}
+
+/*botón negro*/
+.ganar_form_basico input[type=reset]{background: linear-gradient(#E3C5B0, #B99775, #896745, #684F35); color:#FFFFFF; text-shadow:1px 1px 1px #000; width:80px; height:30px; border:1px solid #1C1C1C; border-radius:5px; -webkit-border-radius:5px;-moz-border-radius:5px;box-shadow:1px 1px 3px 0 #000; font-size:14px; padding:.5ex; margin-bottom:0;}
+.ganar_form_basico input[type=reset]:hover { color:#333; cursor:pointer; cursor:hand; text-shadow:0px 0px 0px #000;}
+.ganar_form_basico input[type=reset]:active { position:relative; top:1px; box-shadow:0px 0px 3px 0 #000;}
+
+/* end Formulario */
+
+.ganar_paginador {border: #000 solid thin; margin-left: auto; margin-right: auto;}
+
+
+
+/*clase para ocultar*/
+.ganar_oculto{display: none}
+
+/*para los iconos de aceptar y rechazar*/
+.glyphicon {color:#356801}
+
+/*paginador*/
+.ganar_paginador > li > a:hover, .ganar_paginador > li > span:hover,.ganar_paginador > li > a:focus, .ganar_paginador > li > span:focus {color:#458501;}
+.ganar_paginador_contenedor{text-align:center;}
+
+/*footer*/
+footer{text-align: center;}
+footer div.texto-colum{ 
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-column-count:3;
+    -moz-column-gap:10%;
+    -moz-column-rule:2px dotted #458501;
+    
+}
+
+#msg_producto_encontrado{color: #8DC804; font-size: 1.2em;}
+#msg_producto_noencontrado{color:#1b1b1b; font-size: 1.2em;}
